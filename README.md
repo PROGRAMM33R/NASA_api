@@ -3,7 +3,9 @@ Projekt do předmětu Tvorba aplikací pro mobilní zařízení 2
 
 ## Použité API
 Adresa oficiálního webu: https://api.nasa.gov/api.html
+
 API klíč: DOEYWC9T8bpSUVuZNcS3mXDEuDSoDyYs98Jxuuza
+
 email registrace: lasak.ad@gmail.com
 
 ## Vybrané featury
