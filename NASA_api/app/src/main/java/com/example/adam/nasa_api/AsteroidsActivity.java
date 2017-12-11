@@ -6,18 +6,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -45,9 +39,7 @@ public class AsteroidsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_asteroids2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_asteroids);
 
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         receiver = new MyNetworkReceiver();
@@ -113,7 +105,7 @@ public class AsteroidsActivity extends AppCompatActivity {
     }
 
     private void showErrorPage() {
-        setContentView(R.layout.activity_asteroids2);
+        setContentView(R.layout.activity_asteroids);
         Toast.makeText(this, R.string.connection_error, Toast.LENGTH_SHORT).show();
     }
 
@@ -150,13 +142,13 @@ public class AsteroidsActivity extends AppCompatActivity {
 
                     sr = result.get(i);
                     asteroids.add(
-                                sr.name + "\n" +
-                                "Velocity: " + sr.velocity + " km/h\n" +
-                                "Diameter min.: " + sr.diameterMin + " m\n" +
-                                "Diameter max.: " + sr.diameterMax + " m\n" +
-                                "Magnitude: " + sr.absoluteMagnitude + " m\n" +
-                                "Miss distance: " + sr.missDistance+ " lunar\n" +
-                                "Is Hazard: " + sr.isHazard
+                            sr.name + "\n" +
+                                    "Velocity: " + sr.velocity + " km/h\n" +
+                                    "Diameter min.: " + sr.diameterMin + " m\n" +
+                                    "Diameter max.: " + sr.diameterMax + " m\n" +
+                                    "Magnitude: " + sr.absoluteMagnitude + " m\n" +
+                                    "Miss distance: " + sr.missDistance+ " lunar\n" +
+                                    "Is Hazard: " + sr.isHazard
                     );
                 }
 
@@ -166,8 +158,6 @@ public class AsteroidsActivity extends AppCompatActivity {
                         asteroids );
 
                 listOfAsteroids.setAdapter(arrayAdapter);
-
-//                listOfAsteroids.setOnItemClickListener(this);
 
             }
 
