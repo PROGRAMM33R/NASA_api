@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -66,6 +68,9 @@ public class MainActivity extends AppCompatActivity
 
         updateConnectedFlags();
 
+        if (receiver.refreshDisplay) {
+            loadPage();
+        }
     }
 
     @Override
@@ -115,7 +120,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_dashboard) {
-            // Handle the camera action
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_asteroids) {
 
         } else if (id == R.id.nav_earth) {
@@ -148,12 +154,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void loadPage() {
-        if (((receiver.sPref.equals(receiver.ANY)) && (wifiConnected || mobileConnected))
-                || ((receiver.sPref.equals(receiver.WIFI)) && (wifiConnected))) {
-            new DownloadJsonTask(this).execute(URL + API_KEY);
-        } else {
-            showErrorPage();
-            updateConnectedFlags();
+        if (receiver != null) {
+            if (((receiver.sPref.equals(receiver.ANY)) && (wifiConnected || mobileConnected))
+                    || ((receiver.sPref.equals(receiver.WIFI)) && (wifiConnected))) {
+                new DownloadJsonTask(this).execute(URL + API_KEY);
+            } else {
+                showErrorPage();
+                updateConnectedFlags();
+            }
         }
     }
 
@@ -182,45 +190,22 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         protected void onPostExecute(APODEntry result) {
-            setContentView(R.layout.activity_main);
 
-//            TextView text = (TextView)findViewById(R.id.textView);
-//            TextView textOutput = (TextView)findViewById(R.id.textView2);
+            TextView title = (TextView)findViewById(R.id.textView5);
+            TextView text = (TextView)findViewById(R.id.textView4);
+            TextView url = (TextView)findViewById(R.id.textView2);
 
+            url.setMovementMethod(LinkMovementMethod.getInstance());
             if (result == null){
                 Toast.makeText(context, R.string.connection_error, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, R.string.connection_success, Toast.LENGTH_SHORT).show();
 
-//                result_ = result;
-//                weather_ = result.listMain.get(0);
-//                if (weather_ != null) {
-//                    String outputText = "Actual temperature: " + weather_.listMain.temp + " deg. C\n" +
-//                            "Today min. temperature: " + weather_.listMain.temp_min + " deg. C\n" +
-//                            "Today max. temperature: " + weather_.listMain.temp_max + " deg. C\n" +
-//                            "Pressure: " + weather_.listMain.pressure + " hPa\n" +
-//                            "Humidity: " + weather_.listMain.humidity + " %\n" +
-//                            "Weather: " + weather_.weather.main + "\n" +
-//                            "Description: " + weather_.weather.description + "\n" +
-//                            "Cloudiness: " + weather_.clouds + " %\n" +
-//                            "Wind speed: " + weather_.wind.speed + " m/s\n" +
-//                            "Last update: " + weather_.dt_txt;
-//                    textOutput.setText(outputText);
-//
-//                    DataPoint[] points = new DataPoint[result_.listMain.size()];
-//                    DataPoint[] pointsHumidity = new DataPoint[result_.listMain.size()];
-//                    for (int i = 0; i < result_.listMain.size(); i++){
-//                        points[i] = new DataPoint(i, result_.listMain.get(i).listMain.temp);
-//                        pointsHumidity[i] = new DataPoint(i, result_.listMain.get(i).listMain.humidity);
-//                    }
-//                    GraphView graph = (GraphView) findViewById(R.id.graph1);
-//                    LineGraphSeries<DataPoint> series = new LineGraphSeries<>(points);
-//                    graph.addSeries(series);
-//
-//                    GraphView graph2 = (GraphView) findViewById(R.id.graph2);
-//                    LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(pointsHumidity);
-//                    graph2.addSeries(series2);
-//                }
+                if (result != null) {
+                    title.setText(result.title);
+                    text.setText(result.explanation);
+                    url.setText(result.link);
+                }
             }
 
         }

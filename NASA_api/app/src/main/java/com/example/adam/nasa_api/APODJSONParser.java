@@ -26,14 +26,18 @@ public class APODJSONParser {
 
         APODEntry we = new APODEntry();
 
-        float val1 = 0, val2 = 0, val3 = 0;
-
         reader.beginObject();
         while (reader.hasNext()) {
 
             String name = reader.nextName();
-            if (name.equals("data")) {
-
+            if (name.equals("date")) {
+                we.date = reader.nextString();
+            } else if (name.equals("explanation")){
+                we.explanation = reader.nextString();
+            } else if (name.equals("title")){
+                we.title = reader.nextString();
+            } else if (name.equals("url")){
+                we.link = reader.nextString();
             } else {
                 reader.skipValue();
             }

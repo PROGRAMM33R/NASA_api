@@ -20,11 +20,11 @@ import java.net.URL;
 
 public class MyNetworkReceiver extends BroadcastReceiver {
 
-    public static final String WIFI = "Wi-Fi";
-    public static final String ANY = "Any";
+    public String WIFI = "Wi-Fi";
+    public String ANY = "Any";
 
-    public static boolean refreshDisplay = true;
-    public static String sPref = null;
+    public boolean refreshDisplay = true;
+    public String sPref = "Wi-Fi";
 
     MyNetworkReceiver(){}
 
