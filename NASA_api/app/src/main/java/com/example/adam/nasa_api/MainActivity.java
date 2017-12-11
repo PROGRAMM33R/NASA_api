@@ -123,7 +123,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_asteroids) {
-
+            Intent intent = new Intent(this, AsteroidsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_earth) {
 
         } else if (id == R.id.nav_marsrover) {
@@ -182,6 +183,7 @@ public class MainActivity extends AppCompatActivity
         protected APODEntry doInBackground(String... urls) {
             try {
                 if (isCancelled()) return null;
+                Toast.makeText(context, R.string.download_short, Toast.LENGTH_SHORT).show();
                 return loadJsonFromNetwork(urls[0]);
             } catch (IOException e) {
                 return null;
@@ -200,12 +202,9 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(context, R.string.connection_error, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, R.string.connection_success, Toast.LENGTH_SHORT).show();
-
-                if (result != null) {
-                    title.setText(result.title);
-                    text.setText(result.explanation);
-                    url.setText(result.link);
-                }
+                title.setText(result.title);
+                text.setText(result.explanation);
+                url.setText(result.link);
             }
 
         }

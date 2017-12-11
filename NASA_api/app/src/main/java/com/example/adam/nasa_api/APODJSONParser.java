@@ -12,17 +12,16 @@ import java.io.InputStreamReader;
 
 public class APODJSONParser {
 
-
     public APODEntry parse(InputStream in) throws IOException {
         JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
         try {
-            return readPollutionObject(reader);
+            return readAPODObject(reader);
         } finally {
             reader.close();
         }
     }
 
-    public APODEntry readPollutionObject(JsonReader reader) throws IOException {
+    public APODEntry readAPODObject(JsonReader reader) throws IOException {
 
         APODEntry we = new APODEntry();
 
