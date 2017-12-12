@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -118,8 +119,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_asteroids) {
             Intent intent = new Intent(this, AsteroidsActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_earth) {
-
+        } else if (id == R.id.nav_iss) {
+            Intent intent = new Intent(this, ISSActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_marsrover) {
 
         } else if (id == R.id.nav_share) {

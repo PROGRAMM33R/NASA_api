@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AsteroidsActivity extends AppCompatActivity {
@@ -49,6 +51,11 @@ public class AsteroidsActivity extends AppCompatActivity {
         editTextFrom = (EditText)findViewById(R.id.editTextDateFrom);
         editTextTo = (EditText)findViewById(R.id.editTextDateTo);
         listOfAsteroids = (ListView)findViewById(R.id.listOfAsteroids);
+
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        editTextFrom.setText(date.toString());
+        editTextTo.setText(date.toString());
 
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override

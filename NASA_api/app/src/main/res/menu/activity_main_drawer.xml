@@ -11,8 +11,8 @@
             android:id="@+id/nav_asteroids"
             android:title="Asteroids" />
         <item
-            android:id="@+id/nav_earth"
-            android:title="Earth" />
+            android:id="@+id/nav_iss"
+            android:title="ISS" />
         <item
             android:id="@+id/nav_marsrover"
             android:title="Mars Rover" />
