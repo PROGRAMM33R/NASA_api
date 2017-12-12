@@ -158,7 +158,7 @@ public class ISSActivity extends AppCompatActivity {
                 iss1.add("Latitude: " + result.latitude);
                 iss1.add("Longitude: " + result.longitude);
                 iss1.add("Altitude: " + result.altitude);
-                iss1.add("Velocity: " + result.velocity);
+                iss1.add("Velocity: " + result.velocity + " km/h");
                 iss1.add("Visibility: " + result.visibility);
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
