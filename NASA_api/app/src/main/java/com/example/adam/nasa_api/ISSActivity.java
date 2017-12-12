@@ -77,7 +77,7 @@ public class ISSActivity extends AppCompatActivity {
                         break;
                 }
             }
-            
+
         };
 
     }
@@ -168,7 +168,6 @@ public class ISSActivity extends AppCompatActivity {
 
                 listView1.setAdapter(arrayAdapter);
 
-
                 myHandler.sendEmptyMessage(0);
 
             }
@@ -198,7 +197,19 @@ public class ISSActivity extends AppCompatActivity {
         protected void onPostExecute(ISSCoordinationEntry result) {
 
             if (result == null){
-                Toast.makeText(context, R.string.connection_error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.iss_under_sea, Toast.LENGTH_SHORT).show();
+
+                List<String> iss1 = new ArrayList<>();
+
+                iss1.add("ISS is now under the ocean.");
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        context,
+                        android.R.layout.simple_list_item_1,
+                        iss1 );
+
+                listView2.setAdapter(arrayAdapter);
+
             } else {
                 Toast.makeText(context, R.string.connection_success, Toast.LENGTH_SHORT).show();
 
@@ -221,11 +232,11 @@ public class ISSActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        if (position == 3) {
-                            Uri uri = Uri.parse(parent.getItemAtPosition(position).toString());
-                            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                            startActivity(intent);
-                        }
+                    if (position == 3) {
+                        Uri uri = Uri.parse(parent.getItemAtPosition(position).toString());
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
 
                     }
                 });

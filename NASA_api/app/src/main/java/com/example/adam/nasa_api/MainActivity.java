@@ -87,20 +87,19 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -123,11 +122,29 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, ISSActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_marsrover) {
-
+            Intent intent = new Intent(this, MarsRoverActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
-
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT,
+                    "Hey check out my apps at: http://www.adam-lasak.xf.cz");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
         } else if (id == R.id.nav_send) {
-
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent
+                    .putExtra(Intent.EXTRA_TEXT,
+                            "Hey check out my apps at: http://www.adam-lasak.xf.cz");
+            sendIntent.setType("text/plain");
+            sendIntent.setPackage("com.facebook.orca");
+            try {
+                startActivity(sendIntent);
+            }
+            catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(this, "Please Install Facebook Messenger", Toast.LENGTH_LONG).show();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
