@@ -1,17 +1,17 @@
 # NASA_api
-Projekt do předmětu Tvorba aplikací pro mobilní zařízení 2
+Project into subject Design of Applications for Mobile Devices II
 
-## Použité API
-Adresa oficiálního webu: https://api.nasa.gov/api.html
+## Used API
+Official website: https://api.nasa.gov/api.html
 
-API klíč: DOEYWC9T8bpSUVuZNcS3mXDEuDSoDyYs98Jxuuza
+API key: DOEYWC9T8bpSUVuZNcS3mXDEuDSoDyYs98Jxuuza
 
-email registrace: lasak.ad@gmail.com
+registration email: lasak.ad@gmail.com
 
-## Vybrané featury
-Featur je opravdu široká škála proto zmiňuji pouze tři základní. Postupem času se může seznam rozšířit
-* Fotky a údaje z Mars roveru
-* Fotky a údaje z EPIC kamery (orbitální kamera země)
-* Zvuky ze sondy Voyager2 (beta verze)
+## Features
+The app can be modify to newer and better version. In this project was choosen a few features:
+* Photos from Mars Rover Project
+* Informations about asteroids near Earth
+* ISS informations
 
-Requesty jsou ve formátu JSON. Na formáty bude vytvořena třídy která dokáže JSON formát rozparsovat a následně potřebné struktury k uložení dat.
+Response are from JSON format. Data are downloaded with Java AsyncTask. After download, data are separated into structures which are used in drawing into GUI. 
