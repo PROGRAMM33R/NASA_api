@@ -1,6 +1,8 @@
 # NASA_api
 Project into subject Design of Applications for Mobile Devices II
 
+Official website of the project: http://adam-lasak.xf.cz/w/nasa_api/
+
 ## Used API
 Official website: https://api.nasa.gov/api.html
 
