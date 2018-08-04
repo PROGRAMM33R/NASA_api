@@ -22,11 +22,11 @@ Response are from JSON format. Data are downloaded with Java AsyncTask. After do
 
 <table>
   <tr>
-    <td><a href="url"><img src="http://adam-lasak.xf.cz/w/github-images/nasa_1.png"></a></td>
-    <td><a href="url"><img src="http://adam-lasak.xf.cz/w/github-images/nasa_2.png"></a></td>
+    <td><a href="url"><img src="http://adam-lasak.xf.cz/w/github-images/nasa_1.png" width="350"></a></td>
+    <td><a href="url"><img src="http://adam-lasak.xf.cz/w/github-images/nasa_2.png" width="350"></a></td>
   </tr>
   <tr>
-    <td><a href="url"><img src="http://adam-lasak.xf.cz/w/github-images/nasa_3.png"></a></td>
-    <td><a href="url"><img src="http://adam-lasak.xf.cz/w/github-images/nasa_4.png"></a></td>
+    <td><a href="url"><img src="http://adam-lasak.xf.cz/w/github-images/nasa_3.png" width="350"></a></td>
+    <td><a href="url"><img src="http://adam-lasak.xf.cz/w/github-images/nasa_4.png" width="350"></a></td>
   </tr>
 </table>
